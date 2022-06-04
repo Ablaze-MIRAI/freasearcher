@@ -6,10 +6,11 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"syscall"
 
 	"github.com/skratchdot/open-golang/open"
 	"github.com/tidwall/gjson"
-	// "github.com/yitsushi/go-misskey/services/app"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 type Result struct {
@@ -25,7 +26,6 @@ func splitWords(word string) string {
 
 func getResp(word string, opt string) []Result {
 	url := "https://freasearch.org/search?q=" + splitWords(word) + "&format=json" + opt
-	fmt.Println(url)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -63,26 +63,14 @@ func getResp(word string, opt string) []Result {
 	return ctns
 }
 
-func insertIndent(str string) string {
-	runes := []rune(str)
-	size := len(runes)
+func setWidth() int {
+	width, _, err := terminal.GetSize(syscall.Stdin)
 
-	var result string
-
-	thrice := [][]rune{}
-
-	for i := 0; i < size; i += 41 {
-		end := i + 41
-		if size < end {
-			end = size
-		}
-		thrice = append(thrice, runes[i:end])
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	for _, k := range thrice {
-		result = result + string(k) + "\n"
-	}
-	return result
+	return (width / 2) - 7
 }
 
 func openBowser(url string) {

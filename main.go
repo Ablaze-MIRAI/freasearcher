@@ -1,15 +1,26 @@
 package main
 
 import (
-	// "fmt"
+	"flag"
+	"fmt"
 	"log"
-	"os"
 
 	"github.com/ktr0731/go-fuzzyfinder"
+	"github.com/mattn/go-runewidth"
 )
 
+var (
+	isURL bool
+	word  string
+)
+
+func init() {
+	flag.BoolVar(&isURL, "u", false, "ブラウザを開かずURLを表示するか指定します。")
+	flag.StringVar(&word, "w", "", "検索するキーワードを指定します。")
+}
+
 func main() {
-	word := os.Args[1]
+	flag.Parse()
 
 	ctns := getResp(word, "&language=ja-JP&safesearch=0")
 
@@ -22,11 +33,16 @@ func main() {
 			if i == -1 {
 				return ""
 			}
-			return insertIndent(ctns[i].content)
+			return runewidth.Wrap(ctns[i].content, setWidth())
 		}))
 	if err != nil {
 		log.Fatal(err)
 	}
 	url := ctns[idx[0]].url
-	openBowser(url)
+
+	if isURL == true {
+		fmt.Println(url)
+	} else {
+		openBowser(url)
+	}
 }
