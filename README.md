@@ -1,5 +1,11 @@
 <div align="center">
 
+![Last commit](https://img.shields.io/github/last-commit/Ablaze-MIRAI/freasearcher?style=flat-square)
+![Repository Stars](https://img.shields.io/github/stars/Ablaze-MIRAI/freasearcher?style=flat-square)
+![Issues](https://img.shields.io/github/issues/Ablaze-MIRAI/freasearcher?style=flat-square)
+![Open Issues](https://img.shields.io/github/issues-raw/Ablaze-MIRAI/freasearcher?style=flat-square)
+![Bug Issues](https://img.shields.io/github/issues/Ablaze-MIRAI/freasearcher/bug?style=flat-square)
+
 # 🔍 freasearcher
 
 </div>
