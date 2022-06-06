@@ -8,11 +8,13 @@
 
 [Frea Search](https://freasearch.org/)のAPIを用いて素早く検索し、ターミナル上で閲覧できるコマンドラインツール
 
+**⚠️ Frea Searchは現在Beta版です。応答が遅くなったりタイムアウトする可能性があります。ご了承下さい。**
+
 </div>
 
 ![実行中のgif画像](./img/t-rec.gif)
 
-## 🔰 使い方
+## 🚀 使い方
 
 ```
 # キーワードで検索し、ブラウザで開く
@@ -74,7 +76,32 @@ fo build
 
 ## 📜 ライセンス
 
-[MIT](LICENSE)
+[MIT LICENSE](LICENSE)
+
+### 🧩 Modules
+|ID|Version|License|
+|:---|:---|:---|
+|github.com/gdamore/encoding|v1.0.0|Apache-2.0|
+|github.com/gdamore/tcell/v2|v2.4.0|Apache-2.0|
+|github.com/google/go-cmp|v0.5.7|BSD-3-Clause|
+|github.com/google/gofuzz|v1.2.0|Apache-2.0|
+|github.com/ktr0731/go-fuzzyfinder|v0.6.0|MIT|
+|github.com/lucasb-eyer/go-colorful|v1.0.3|MIT|
+|github.com/mattn/go-runewidth|v0.0.13|MIT|
+|github.com/nsf/termbox-go|v0.0.0-20201124104050-ed494de23a00|MIT|
+|github.com/pkg/errors|v0.9.1|BSD-2-Clause|
+|github.com/rivo/uniseg|v0.2.0|MIT|
+|github.com/skratchdot/open-golang|v0.0.0-20200116055534-eef842397966|MIT|
+|github.com/tidwall/gjson|v1.14.1|MIT|
+|github.com/tidwall/match|v1.1.1|MIT|
+|github.com/tidwall/pretty|v1.2.0|MIT|
+|golang.org/x/crypto|v0.0.0-20220525230936-793ad666bf5e|BSD-3-Clause|
+|golang.org/x/net|v0.0.0-20211112202133-69e39bad7dc2|BSD-3-Clause|
+|golang.org/x/sys|v0.0.0-20210630005230-0f9fa26af87c|BSD-3-Clause|
+|golang.org/x/term|v0.0.0-20201210144234-2321bbc49cbf|BSD-3-Clause|
+|golang.org/x/text|v0.3.6|BSD-3-Clause|
+|golang.org/x/tools|v0.0.0-20180917221912-90fa682c2a6e|BSD-3-Clause|
+|golang.org/x/xerrors|v0.0.0-20200804184101-5ec99f83aff1|BSD-3-Clause|
 
 ## 👏 影響を受けたプロジェクト 
 
@@ -90,3 +117,6 @@ ktr0731
 
 Markus Heiser & Alexandre Flament
 - [searxng/searxng](https://github.com/searxng/searxng)
+
+kemokemo
+- [kemokemo/gomrepo](https://github.com/kemokemo/gomrepo)
