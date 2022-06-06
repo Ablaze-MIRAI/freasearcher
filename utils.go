@@ -21,7 +21,7 @@ type Result struct {
 
 func splitWords(word string) string {
 	splited := strings.Split(word, " ")
-	return strings.Join(splited, "&")
+	return strings.Join(splited, "+")
 }
 
 func getResp(word string, opt string) []Result {
