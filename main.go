@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/ktr0731/go-fuzzyfinder"
 	"github.com/mattn/go-runewidth"
@@ -21,6 +22,11 @@ func init() {
 
 func main() {
 	flag.Parse()
+
+	if word == "" {
+		fmt.Println("検索キーワードを指定して下さい。\n詳しくはfreasearcher --helpを実行してください。")
+		os.Exit(1)
+	}
 
 	ctns := getResp(word, "&language=ja-JP&safesearch=0")
 
