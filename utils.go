@@ -88,7 +88,7 @@ func setWidth() int {
 	return (width / 2) - 7
 }
 
-func openBowser(url string) {
+func openBrowser(url string) {
 	fmt.Printf("Open the %s in your browser...", url)
 	open.Run(url)
 }

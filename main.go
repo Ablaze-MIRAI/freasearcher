@@ -56,9 +56,9 @@ func main() {
 	}
 	url := ctns[idx[0]].url
 
-	if isURL == true {
+	if isURL {
 		fmt.Println(url)
 	} else {
-		openBowser(url)
+		openBrowser(url)
 	}
 }
