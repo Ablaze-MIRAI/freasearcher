@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/ktr0731/go-fuzzyfinder"
@@ -28,7 +27,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	ctns := getResp(word, "&language=ja-JP&safesearch=0")
+	ctns, err := getResp(word, "&language=ja-JP&safesearch=0")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "検索結果の取得に失敗しました: %s\n", err)
+		os.Exit(2)
+	}
 
 	idx, err := fuzzyfinder.FindMulti(
 		ctns,
@@ -39,10 +42,12 @@ func main() {
 			if i == -1 {
 				return ""
 			}
+
 			return runewidth.Wrap(ctns[i].content, setWidth())
 		}))
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintf(os.Stderr, "fuzzyfinderにてエラーが発生しました: %s\n", err)
+		os.Exit(3)
 	}
 	url := ctns[idx[0]].url
 

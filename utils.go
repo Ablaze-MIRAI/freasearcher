@@ -24,25 +24,25 @@ func splitWords(word string) string {
 	return strings.Join(splited, "+")
 }
 
-func getResp(word string, opt string) []Result {
+func getResp(word string, opt string) ([]Result, error) {
 	url := "https://freasearch.org/search?q=" + splitWords(word) + "&format=json" + opt
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("リクエストの構築に失敗しました: %w", err)
 	}
 
 	client := new(http.Client)
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("リクエストの取得に失敗しました: %w", err)
 	}
 
 	defer resp.Body.Close()
 
 	bArray, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("レスポンスボディの読み込みに失敗しました: %w", err)
 	}
 
 	results := gjson.Get(string(bArray), "results")
@@ -60,12 +60,11 @@ func getResp(word string, opt string) []Result {
 
 	}
 
-	return ctns
+	return ctns, nil
 }
 
 func setWidth() int {
 	width, _, err := terminal.GetSize(syscall.Stdin)
-
 	if err != nil {
 		log.Fatal(err)
 	}
