@@ -1,13 +1,22 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/ktr0731/go-fuzzyfinder"
 	"github.com/mattn/go-runewidth"
+)
+
+type exitCode int
+
+const (
+	exitCodeOK exitCode = iota
+	exitCodeErrArgs
+	exitCodeErrRequest
+	exitCodeErrFuzzyFinder
 )
 
 var (
@@ -25,10 +34,19 @@ func main() {
 
 	if word == "" {
 		fmt.Println("検索キーワードを指定して下さい。\n詳しくはfreasearcher --helpを実行してください。")
-		os.Exit(1)
+		os.Exit(int(exitCodeErrArgs))
 	}
 
-	ctns := getResp(word, "&language=ja-JP&safesearch=0")
+	param := Param{
+		Language:   "ja",
+		SafeSearch: 0,
+		Query:      word,
+	}
+	ctns, err := getResp(param)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "検索結果の取得に失敗しました: %s\n", err)
+		os.Exit(int(exitCodeErrRequest))
+	}
 
 	idx, err := fuzzyfinder.FindMulti(
 		ctns,
@@ -39,16 +57,24 @@ func main() {
 			if i == -1 {
 				return ""
 			}
+
 			return runewidth.Wrap(ctns[i].content, setWidth())
 		}))
 	if err != nil {
-		log.Fatal(err)
+		if errors.Is(fuzzyfinder.ErrAbort, err) {
+			// 正常終了
+			os.Exit(int(exitCodeOK))
+		}
+		fmt.Fprintf(os.Stderr, "fuzzyfinderにてエラーが発生しました: %s\n", err)
+		os.Exit(int(exitCodeErrFuzzyFinder))
 	}
 	url := ctns[idx[0]].url
 
-	if isURL == true {
+	if isURL {
 		fmt.Println(url)
 	} else {
-		openBowser(url)
+		openBrowser(url)
 	}
+
+	os.Exit(int(exitCodeOK))
 }
