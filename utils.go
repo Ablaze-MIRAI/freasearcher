@@ -5,7 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
+	"net/url"
+	"strconv"
 	"syscall"
 
 	"github.com/skratchdot/open-golang/open"
@@ -19,15 +20,30 @@ type Result struct {
 	url     string
 }
 
-func splitWords(word string) string {
-	splited := strings.Split(word, " ")
-	return strings.Join(splited, "+")
+type Param struct {
+	Query      string
+	Language   string
+	SafeSearch int
 }
 
-func getResp(word string, opt string) ([]Result, error) {
-	url := "https://freasearch.org/search?q=" + splitWords(word) + "&format=json" + opt
+func newURL(param Param) string {
+	u := &url.URL{
+		Scheme: "https",
+		Host:   "freasearch.org",
+		Path:   "search",
+	}
+	q := u.Query()
+	q.Set("format", "json")
+	q.Set("q", param.Query)
+	q.Set("language", param.Language)
+	q.Set("safesearch", strconv.Itoa(param.SafeSearch))
+	u.RawQuery = q.Encode()
 
-	req, err := http.NewRequest("GET", url, nil)
+	return u.String()
+}
+
+func getResp(param Param) ([]Result, error) {
+	req, err := http.NewRequest("GET", newURL(param), nil)
 	if err != nil {
 		return nil, fmt.Errorf("リクエストの構築に失敗しました: %w", err)
 	}

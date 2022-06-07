@@ -27,7 +27,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	ctns, err := getResp(word, "&language=ja-JP&safesearch=0")
+	param := Param{
+		Language:   "ja",
+		SafeSearch: 0,
+		Query:      word,
+	}
+	ctns, err := getResp(param)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "検索結果の取得に失敗しました: %s\n", err)
 		os.Exit(2)
