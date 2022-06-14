@@ -72,7 +72,7 @@ go mod tidy
 go run main.go
 
 # Build
-fo build
+go build
 ```
 ## 📝 Todo
 
