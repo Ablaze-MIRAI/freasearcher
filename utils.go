@@ -45,8 +45,6 @@ func newURL(param Param) string {
 func getResp(param Param) ([]Result, error) {
 	req, err := http.NewRequest("GET", newURL(param), nil)
 	if err != nil {
-		return nil, fmt.Errorf("リクエストの構築に失敗しました: %w", err)
-	}
 
 	client := new(http.Client)
 	resp, err := client.Do(req)

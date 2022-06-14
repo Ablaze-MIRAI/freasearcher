@@ -86,7 +86,8 @@ go build
 ## 📝 Todo
 
 - [ ] 検索オプションの追加
-- [ ] 英語のドキュメントの準備
+- [x] 英語のドキュメントの準備<br>
+[完了しました！](https://github.com/Ablaze-MIRAI/freasearcher/commit/6295d8f993fe135ad90c33d96d87634d68c26c36)@code-raisan ありがとう！💕
 - [ ] FreaSearch APIのドキュメント
 
 ## 📜 ライセンス
