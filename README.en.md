@@ -13,65 +13,65 @@
 <table>
   <thead>
     <tr>
-      <th style="text-align:center">日本語</th>
-      <th style="text-align:center"><a href="README.en.md">English</a></th>
+      <th style="text-align:center"><a href="README.md">日本語</a></th>
+      <th style="text-align:center">English</th>
     </tr>
   </thead>
 </table>
 
 <div align="center">
 
-[Frea Search](https://freasearch.org/)のAPIを用いて素早く検索し、ターミナル上で閲覧できるコマンドラインツール
+Command line tool to quickly search and browse on the terminal using [Frea Search](https://freasearch.org/)'s API
 
-**⚠️ Frea Searchは現在Beta版です。応答が遅くなったりタイムアウトする可能性があります。ご了承下さい。**
+**⚠️ Frea Search is currently in Beta version. Responses may be slow or time out. Please be patient.**
 
 </div>
 
-![実行中のgif画像](./img/t-rec.gif)
+![Running gif image](./img/t-rec.gif)
 
-## 🚀 使い方
+## 🚀 Treatment
 
 ```
-# キーワードで検索し、ブラウザで開く
+# Search by keyword and open in browser
 freasearcher -w keyword
 
-# 複数キーワードを指定する
+# Specify multiple keywords
 freasearcher -w "search some keyword"
 
-# URLを表示して終了する
+# Display URL and exit
 freasearcher -u -w keyword
 ```
 
-**注意⚠️ : デフォルトの検索言語は日本語に設定されています。また、現状変更出来ません。**
+**Note⚠️ : The default search language is set to Japanese. It cannot be changed at this time.**
 
-1. 引数に検索したいキーワードを指定してコマンドを実行します。
-1. 検索結果をfuzzyfinderで絞り込みます。`Ctrl-N`, `Ctrl-P` または `Ctrl-J`, `Ctrl-K` でフォーカスを移動します。 `Tab`キーで選択し `Enter` キーで確定します。
-1. 選択したサイトのURLが出力されます。
+1. execute the command with the keyword(s) you wish to search for as an argument
+1. Refine your search results with the fuzzyfinder. Use `Ctrl-N`, `Ctrl-P` or `Ctrl-J`, `Ctrl-K` to move the focus. Select with `Tab` key and confirm with `Enter` key.
+1. The URL of the selected site is output.
 
-### 🌏 ブラウザで記事のページを開く
+### 🌏 Open the article page in your browser
 
-ブラウザで記事のページを開く機能が実装されました！🎉
-また、`-u`オプションを追加するとURLを表示して終了することも可能です。
+The ability to open a page of articles in your browser has been implemented!!! 🎉
+You can also add the `-u` option to display the URL and exit.
 
-### ⚡ 高度な検索
+### ⚡ Advanced Search
 
 Not yet... 💤
 
-## ⬇️  インストール
+## ⬇️  Install
 
-リリースページから実行可能なバイナリをダウンロードしてください。
+Download the executable binary from the release page.
 
 > [Latest Release]()
 
 Not yet... 💤
 
-ソースからビルドする場合は、このリポジトリをクローンして `go install` を実行してください。
-`go1.18.2 linux/amd64`にて開発しています。
+To build from source, clone this repository and run `go install`.
+Developed on `go1.18.2 linux/amd64`.
 
-`go install`をする場合は以下のように実行してください。
+To `go install`, run the following.
 `go install https://github.com/Ablaze-MIRAI/freasearcher@latest`
 
-## ⛏️   開発
+## ⛏️  Development
 
 ```sh
 # install dependencies
@@ -85,11 +85,10 @@ go build
 ```
 ## 📝 Todo
 
-- [ ] 検索オプションの追加
-- [ ] 英語のドキュメントの準備
-- [ ] FreaSearch APIのドキュメント
+- [ ] Additional search options
+- [ ] FreaSearch API Documentation
 
-## 📜 ライセンス
+## 📜 License
 
 [MIT LICENSE](LICENSE)
 
@@ -118,12 +117,12 @@ go build
 |golang.org/x/tools|v0.0.0-20180917221912-90fa682c2a6e|BSD-3-Clause|
 |golang.org/x/xerrors|v0.0.0-20200804184101-5ec99f83aff1|BSD-3-Clause|
 
-## 👏 影響を受けたプロジェクト 
+## 👏  Impacted Projects
 
 - [sheepla/fzwiki](https://github.com/sheepla/fzwiki)
 - [sheepla/fzenn](https://github.com/sheepla/fzenn)
 
-## 💕  スペシャルサンクス
+## 💕  Special thanks
 mattn
 - [mattn/go-runewidth](https://github.com/mattn/go-runewidth)
 
