@@ -10,7 +10,14 @@
 
 </div>
 
-| 日本語 | [English](./README.en.md) |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">日本語</th>
+      <th style="text-align:center"><a href="README.en.md">English</a></th>
+    </tr>
+  </thead>
+</table>
 
 <div align="center">
 
