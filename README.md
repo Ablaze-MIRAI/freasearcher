@@ -10,6 +10,8 @@
 
 </div>
 
+| 日本語 | [English](./README.en.md) |
+
 <div align="center">
 
 [Frea Search](https://freasearch.org/)のAPIを用いて素早く検索し、ターミナル上で閲覧できるコマンドラインツール
