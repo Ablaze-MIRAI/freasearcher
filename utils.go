@@ -81,7 +81,6 @@ func getResp(param Param) ([]Result, error) {
 
 func setWidth() int {
 	fd := int(os.Stdout.Fd())
-	print(fd)
 	width, _, err := term.GetSize(fd)
 	if err != nil {
 		log.Fatal(err)
