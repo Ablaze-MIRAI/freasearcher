@@ -6,12 +6,12 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strconv"
-	"syscall"
 
 	"github.com/skratchdot/open-golang/open"
 	"github.com/tidwall/gjson"
-	"golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/term"
 )
 
 type Result struct {
@@ -45,6 +45,8 @@ func newURL(param Param) string {
 func getResp(param Param) ([]Result, error) {
 	req, err := http.NewRequest("GET", newURL(param), nil)
 	if err != nil {
+		return nil, fmt.Errorf("リクエストの作成に失敗しました: %w", err)
+	}
 
 	client := new(http.Client)
 	resp, err := client.Do(req)
@@ -78,7 +80,8 @@ func getResp(param Param) ([]Result, error) {
 }
 
 func setWidth() int {
-	width, _, err := terminal.GetSize(syscall.Stdin)
+	fd := int(os.Stdout.Fd())
+	width, _, err := term.GetSize(fd)
 	if err != nil {
 		log.Fatal(err)
 	}
