@@ -7,7 +7,10 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"runtime"
 	"strconv"
+
+	"github.com/code-raisan/gouseragent"
 
 	"github.com/skratchdot/open-golang/open"
 	"github.com/tidwall/gjson"
@@ -42,8 +45,25 @@ func newURL(param Param) string {
 	return u.String()
 }
 
+func getUserAgent() string {
+	switch runtime.GOOS {
+	case "windows":
+		return gouseragent.MozillaFirefoxWindows
+	case "linux":
+		return gouseragent.MozillaFirefoxLinux
+	case "darwin":
+		return gouseragent.MozillaFirefoxMac
+	default:
+		return gouseragent.MozillaFirefoxLinux
+	}
+}
+
 func getResp(param Param) ([]Result, error) {
+	fmt.Println(newURL(param))
 	req, err := http.NewRequest("GET", newURL(param), nil)
+	ua := getUserAgent()
+	req.Header.Add("User-Agent", ua)
+
 	if err != nil {
 		return nil, fmt.Errorf("リクエストの作成に失敗しました: %w", err)
 	}
@@ -55,6 +75,7 @@ func getResp(param Param) ([]Result, error) {
 	}
 
 	defer resp.Body.Close()
+	fmt.Println(resp.Body)
 
 	bArray, err := ioutil.ReadAll(resp.Body)
 	if err != nil {

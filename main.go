@@ -4,10 +4,9 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"os"
-
 	"github.com/ktr0731/go-fuzzyfinder"
 	"github.com/mattn/go-runewidth"
+	"os"
 )
 
 type exitCode int
