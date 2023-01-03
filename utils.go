@@ -7,8 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strconv"
-
+	
 	"github.com/skratchdot/open-golang/open"
 	"github.com/tidwall/gjson"
 	"golang.org/x/term"
@@ -29,14 +28,12 @@ type Param struct {
 func newURL(param Param) string {
 	u := &url.URL{
 		Scheme: "https",
-		Host:   "freasearch.org",
+		Host:   "api.freasearch.org",
 		Path:   "search",
 	}
 	q := u.Query()
-	q.Set("format", "json")
 	q.Set("q", param.Query)
-	q.Set("language", param.Language)
-	q.Set("safesearch", strconv.Itoa(param.SafeSearch))
+	q.Set("language", "ja-JP")
 	u.RawQuery = q.Encode()
 
 	return u.String()
@@ -62,7 +59,7 @@ func getResp(param Param) ([]Result, error) {
 	}
 
 	results := gjson.Get(string(bArray), "results")
-
+	
 	ctns := []Result{}
 
 	for _, result := range results.Array() {
