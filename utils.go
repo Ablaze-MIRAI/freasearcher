@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
-	
+
 	"github.com/skratchdot/open-golang/open"
 	"github.com/tidwall/gjson"
 	"golang.org/x/term"
@@ -53,7 +53,7 @@ func getResp(param Param) ([]Result, error) {
 
 	defer resp.Body.Close()
 
-	bArray, err := ioutil.ReadAll(resp.Body)
+	bArray, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("レスポンスボディの読み込みに失敗しました: %w", err)
 	}
