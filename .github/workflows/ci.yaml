@@ -4,6 +4,10 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: enable problem matcher
+        run: |
+          echo "::add-matcher::.github/matcher.json"
+
       - name: checkout
         uses: actions/checkout@v2
 
