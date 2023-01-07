@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup revive
+        uses: docker://morphy/revive-action:v2
+        with:
+          config: revive/config.toml
