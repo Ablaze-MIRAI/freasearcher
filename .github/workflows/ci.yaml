@@ -8,8 +8,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: enable problem matcher
-        run: |
-          echo "::add-matcher::.github/matcher.json"
+        # run: |
+        #   echo "::add-matcher::.github/matcher.json"
 
       - name: setup revive
         uses: docker://morphy/revive-action:v2
