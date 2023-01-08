@@ -83,6 +83,12 @@ go run main.go
 # Build
 go build
 ```
+
+This repository uses `[pre-commit](https://pre-commit.com)`.
+To use `pre-commit`, run the following command.
+
+`pre-commit install`
+
 ## 📝 Todo
 
 - [ ] Additional search options

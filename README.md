@@ -83,6 +83,12 @@ go run main.go
 # Build
 go build
 ```
+
+このリポジトリでは`[pre-commit](https://pre-commit.com)`を採用しています。
+`pre-commit`を使うには以下のコマンドを実行してください。
+
+`pre-commit install`
+
 ## 📝 Todo
 
 - [ ] 検索オプションの追加
@@ -119,7 +125,7 @@ go build
 |golang.org/x/tools|v0.0.0-20180917221912-90fa682c2a6e|BSD-3-Clause|
 |golang.org/x/xerrors|v0.0.0-20200804184101-5ec99f83aff1|BSD-3-Clause|
 
-## 👏 影響を受けたプロジェクト 
+## 👏 影響を受けたプロジェクト
 
 - [sheepla/fzwiki](https://github.com/sheepla/fzwiki)
 - [sheepla/fzenn](https://github.com/sheepla/fzenn)
