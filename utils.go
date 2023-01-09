@@ -1,3 +1,4 @@
+// Files with general processing such as URL generation
 package main
 
 import (
@@ -13,19 +14,19 @@ import (
 	"golang.org/x/term"
 )
 
-type Result struct {
+type result struct {
 	title   string
 	content string
 	url     string
 }
 
-type Param struct {
+type param struct {
 	Query      string
 	Language   string
 	SafeSearch int
 }
 
-func newURL(param Param) string {
+func newURL(param param) string {
 	u := &url.URL{
 		Scheme: "https",
 		Host:   "api.freasearch.org",
@@ -39,7 +40,7 @@ func newURL(param Param) string {
 	return u.String()
 }
 
-func getResp(param Param) ([]Result, error) {
+func getResp(param param) ([]result, error) {
 	req, err := http.NewRequest("GET", newURL(param), nil)
 	if err != nil {
 		return nil, fmt.Errorf("リクエストの作成に失敗しました: %w", err)
@@ -59,16 +60,16 @@ func getResp(param Param) ([]Result, error) {
 	}
 
 	results := gjson.Get(string(bArray), "results")
-	
-	ctns := []Result{}
 
-	for _, result := range results.Array() {
+	ctns := []result{}
 
-		title := gjson.Get(result.String(), "title").String()
-		content := gjson.Get(result.String(), "content").String()
-		url := gjson.Get(result.String(), "url").String()
+	for _, r := range results.Array() {
 
-		tmp := Result{title: title, content: content, url: url}
+		title := gjson.Get(r.String(), "title").String()
+		content := gjson.Get(r.String(), "content").String()
+		url := gjson.Get(r.String(), "url").String()
+
+		tmp := result{title: title, content: content, url: url}
 		ctns = append(ctns, tmp)
 
 	}

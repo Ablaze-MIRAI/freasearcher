@@ -1,3 +1,4 @@
+// CUI client for Frea Search
 package main
 
 import (
@@ -37,7 +38,7 @@ func main() {
 		os.Exit(int(exitCodeErrArgs))
 	}
 
-	param := Param{
+	param := param{
 		Language:   "ja",
 		SafeSearch: 0,
 		Query:      word,
