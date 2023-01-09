@@ -31,6 +31,8 @@
 
 ## 🚀 使い方
 
+現在キーワードオプションの変更が検討されています。関連issueは[こちら](https://github.com/Ablaze-MIRAI/freasearcher/issues)
+
 ```
 # キーワードで検索し、ブラウザで開く
 freasearcher -w keyword

@@ -31,6 +31,8 @@ Command line tool to quickly search and browse on the terminal using [Frea Searc
 
 ## 🚀 Treatment
 
+We are currently considering changing the keyword options. Related issue [here](https://github.com/Ablaze-MIRAI/freasearcher/issues)
+
 ```
 # Search by keyword and open in browser
 freasearcher -w keyword
