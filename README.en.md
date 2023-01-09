@@ -86,7 +86,7 @@ go run main.go
 go build
 ```
 
-This repository uses `[pre-commit](https://pre-commit.com)`.
+This repository uses [`pre-commit`](https://pre-commit.com).
 To use `pre-commit`, run the following command.
 
 `pre-commit install`

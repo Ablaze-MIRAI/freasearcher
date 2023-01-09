@@ -86,7 +86,7 @@ go run main.go
 go build
 ```
 
-このリポジトリでは`[pre-commit](https://pre-commit.com)`を採用しています。
+このリポジトリでは[`pre-commit`](https://pre-commit.com)を採用しています。
 `pre-commit`を使うには以下のコマンドを実行してください。
 
 `pre-commit install`
