@@ -27,6 +27,9 @@ Command line tool to quickly search and browse on the terminal using [Frea Searc
 
 </div>
 
+> [!NOTE]
+> freasearcher was archived when end of service is Frea Search. Thanks for Star and contribute!
+
 ![Running gif image](./img/t-rec.gif)
 
 ## 🚀 Treatment
