@@ -21,14 +21,14 @@
 
 <div align="center">
 
-> [!NOTE]
-> Frea Searchのサービス終了に伴いfreasearcherをアーカイブします。Starやコントリビュートありがとうございました。
-
 [Frea Search](https://freasearch.org/)のAPIを用いて素早く検索し、ターミナル上で閲覧できるコマンドラインツール
 
 **⚠️ Frea Searchは現在Beta版です。応答が遅くなったりタイムアウトする可能性があります。ご了承下さい。**
 
 </div>
+
+> [!NOTE]
+> Frea Searchのサービス終了に伴いfreasearcherをアーカイブします。Starやコントリビュートありがとうございました。
 
 ![実行中のgif画像](./img/t-rec.gif)
 
